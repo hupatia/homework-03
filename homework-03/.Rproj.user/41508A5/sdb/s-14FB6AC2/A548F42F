@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#V. feladat\n#3. feladat\n\nget_gender<-function(nev=comic_characters$name[1])\n{\n  index <- which(comic_characters$name==nev)\n  uj_gsm <- strsplit(comic_characters$gsm, split=\" \", fixed=TRUE)\n  comic_characters$gsm <- lapply(uj_gsm, function(x) x[1])\n  uj_s <- strsplit(comic_characters$sex, split=\" \", fixed=TRUE)\n  comic_characters$sex <- lapply(uj_s, function(x) x[1])\n  if(length(index)>1)\n  {\n    \n    comic_characters$ujoszlop[is.na(comic_characters$gsm)==FALSE] <- comic_characters$gsm[is.na(comic_characters$gsm)==FALSE]\n    comic_characters$ujoszlop[is.na(comic_characters$gsm)==TRUE] <- comic_characters$sex[is.na(comic_characters$gsm)==TRUE]\n    reszhalmaz <- comic_characters[comic_characters$name==nev, ]\n    return(sapply(reszhalmaz$ujoszlop, function(x) x[]))\n    \n  }\n  \n  #uj_gsm <- strsplit(comic_characters$gsm, split=\" \")\n  #comic_characters$gsm <- lapply(uj_gsm, function(x) x[1])\n  #uj_s <- strsplit(comic_characters$sex, split=\" \")\n  #comic_characters$sex <- lapply(uj_s, function(x) x[1])\n  \n  if(is.na(comic_characters$gsm[index])==TRUE)\n  {\n    \n    return(sapply(comic_characters$sex[index], function(x) x[]))\n  }\n  else\n  {\n    \n    return(sapply(comic_characters$gsm[index], function(x) x[]))\n  }\n}\n#IV. feladat\n#1. feladat részéhez\nfixrnorm <- function(n, s=1) {\n  x <- rnorm(n)  \n  x <- s * x / sd(x)  \n  return(x)\n}",
+    "created" : 1490561115088.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3115253682",
+    "id" : "A548F42F",
+    "lastKnownWriteTime" : 1490561194,
+    "last_content_update" : 1490561194840,
+    "path" : "C:/Users/o/Desktop/homework-03/homework-03/src/homework-03-functions.R",
+    "project_path" : "src/homework-03-functions.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

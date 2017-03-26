@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#############################\n#Házi feladat 3             #\n#Programozás I.             #\n#2016/17. II. félév         #\n#Kelemen Kinga              #\n#2017-03-22                 #\n#############################\n\n#II. feladat\n#1. feladat\n#Eloszor létrehozom a megfelelo hosszuságu vektorokat.\nset.seed(22)\nhossz_A <- vector(length=sample(10:20, 1))\nhossz_B <- vector(length=sample(10:20, 1))\nhossz_C <- vector(length=sample(10:20, 1))\nhossz_D <- vector(length=sample(10:20, 1))\nhossz_E <- vector(length=sample(10:20, 1))\n\n#A megfelelo hosszuságu vektorokat feltoltom számokkal az egyenletes eloszlásból.\nA <- runif(length(hossz_A),1,2)\nB <- runif(length(hossz_B),1,2)\nC <- runif(length(hossz_C),1,2)\nD <- runif(length(hossz_D),1,2)\nE <- runif(length(hossz_E),1,2)\n\n#Elkészítem a listát.\nMy_list <- list(A, B, C, D, E)\n\n#2. feladat\nMy_list2 <- vector()\nfor (i in 1:length(My_list)) {\n  My_list2[i] <- length(My_list[[i]])\n}\nMy_list2\n\n#3. feladat\nlapply(My_list, function(x) length(x))\n\n#4. feladat\nsapply(My_list, function(x) length(x))\n\n#III. feladat\n#1. feladat\ndata(chickwts)\nhead(chickwts)\n\n#2. feladat\ndata_chicken <- aggregate(chickwts$weight, by = list(feed = chickwts$feed), mean)\n\n#3. feladat\ntarget <- sort(data_chicken$x)\ndata_chicken[match(target, data_chicken$x),]\n\n#IV. feladat\n#1. feladat\n#Első variáció, amikor simán az rnorm függyvényt használom és ott próbálom beállítani a szórást\n#De az ellenőrzésnél nem pontosan azok a szórások jönnek ki, nagy mintánál persze konvergálna a megadott szóráshoz\nM <- matrix(0, 50, 10)\nfor (i in 1:50)\n{\n  M[i, ] <- rnorm(10, sd=i)\n}\nM\n#Második variáció, amikor rákényszerítem még jobban, hogy pontosan az a szórás legyen\n# Ehhez írtam egy függvényt a homework-03-funcions.R fájlban fixrnorm néven\nsource(\"src/homework-03-functions.R\")\nM <- matrix(0, 50, 10)\nfor (i in 1:50)\n{\n  M[i, ] <- fixrnorm(10, s=i)\n}\nM\n#2. feladat\nM_sd <- NA\nfor (i in 1:nrow(M)) {\n  M_sd[i] <- sd(M[i, ])\n}\nM_sd\n\n#3. feladat\napply(M,1,sd)\n\n#4. feladat\n#Eloszor 0 és 1 közé normalizálom.\nrange = max(M) - min(M)\nM = (M - min(M)) / range\nM\n\n#Majd -1 és 1 közé.\nrange2 = 1 - (-1)\nM = (M * range2) + (-1)\nM\n#Sorok átlaga.\napply(M,1,mean)\n\n#V. feladat\n#1.feladat\ninstall.packages(\"fivethirtyeight\")\nlibrary(fivethirtyeight)\ndata(comic_characters)\n\n#2. feladat\nuj_name <- strsplit(comic_characters$name, \" (\", fixed=TRUE)\ncomic_characters$name <- lapply(uj_name, function(x) x[1])\n\nhead(comic_characters$name)\n\n#3. feladat\n# megoldás a homework-03-functions.R-ben\n\nsource(\"src/homework-03-functions.R\")\n\n#4. feladat\nget_gender(\"Thor\")\nget_gender(\"Katherine Pryde\")\nget_gender(\"Loki Laufeyson\")",
+    "created" : 1490561082196.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "463485048",
+    "id" : "5CE31991",
+    "lastKnownWriteTime" : 1490561176,
+    "last_content_update" : 1490561176879,
+    "path" : "C:/Users/o/Desktop/homework-03/homework-03/src/homework-03.R",
+    "project_path" : "src/homework-03.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
